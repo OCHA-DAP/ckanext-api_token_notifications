@@ -26,6 +26,14 @@ services:
     # volumes:
     #   - "${POSTGRES_DATA_HOST_FOLDER:-./postgres_data}:/var/lib/postgresql/data"
 
+  mailhog:
+    # environment:
+    #   TERM: screen
+    image: mailhog/mailhog:v1.0.0
+    hostname: mailhog
+    ports:
+      - "127.0.0.1:8025:8025"
+
   ckan:
     image: openknowledge/ckan-dev:${CKAN_IMAGE_TAG:-2.9}
 #    build: ../.

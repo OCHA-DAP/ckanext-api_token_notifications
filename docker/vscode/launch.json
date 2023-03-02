@@ -12,7 +12,12 @@
             "program": "ckan.py",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["-c", "ckan.ini", "run", "--host", "0.0.0.0", "--disable-reloader"]
+            "args": ["-c", "ckan.ini", "run", "--host", "0.0.0.0", "--disable-reloader"],
+            "env": {
+                "CKAN___SMTP__SERVER": "mailhog:1025",
+                "CKAN___SMTP__STARTTLS":"False",
+                "CKAN___SMTP__MAIL_FROM":"ckan1@example.com"
+            },
         },
         {
             "name": "Tests",
