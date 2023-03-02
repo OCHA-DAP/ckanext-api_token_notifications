@@ -1,0 +1,11 @@
+[MASTER]
+disable=
+    missing-function-docstring,
+    missing-class-docstring,
+    missing-module-docstring,
+    logging-fstring-interpolation,
+    consider-using-from-import,
+    consider-using-f-string,
+
+[FORMAT]
+max-line-length=120

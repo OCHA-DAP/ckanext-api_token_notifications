@@ -1,0 +1,4 @@
+POSTGRES_DATA_HOST_FOLDER=~/ckan_with_docker/data_for_postgres
+SOLR_DATA_HOST_FOLDER=~/ckan_with_docker/data_for_solr
+CKAN_DATA_HOST_FOLDER=~/ckan_with_docker/data_for_ckan
+CKAN_RESTART_POLICY=no

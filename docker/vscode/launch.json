@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Start CKAN",
+            "type": "python",
+            "request": "launch",
+            // "program": "src/ckan/ckan.py",
+            "program": "ckan.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["-c", "ckan.ini", "run", "--host", "0.0.0.0", "--disable-reloader"]
+        },
+        {
+            "name": "Tests",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "module": "pytest",
+            "justMyCode": true,
+            "env": {
+                "CKAN_SQLALCHEMY_URL":"postgresql://ckan_default:pass@postgres/ckan_testing",
+                "CKAN_DATASTORE_WRITE_URL":"postgresql://ckan_default:pass@postgres/datastore_testing",
+                "CKAN_DATASTORE_READ_URL":"postgresql://datastore_read:pass@postgres/datastore_testing"
+            },
+            "args": ["--ckan-ini", "ckanext-api_token_notifications/test.ini", "ckanext-api_token_notifications/ckanext/api_token_notifications/tests/"]
+        }
+    ]
+}

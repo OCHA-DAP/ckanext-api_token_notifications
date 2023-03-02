@@ -1,0 +1,20 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.enabled": true,
+    "workbench.colorTheme": "Night Owl Light",
+    "workbench.iconTheme": "material-icon-theme",
+    "python.autoComplete.extraPaths": [
+        "/srv/app/src/ckan"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.envFile": "${workspaceFolder}/.vscode/.env",
+    "python.testing.pytestArgs": [
+        "--ckan-ini",
+        "ckanext-api_token_notifications/test.ini"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.cwd": "",
+
+}

@@ -1,0 +1,14 @@
+# api_token_notifications-js:
+#   filter: rjsmin
+#   output: ckanext-api_token_notifications/%(version)s-api_token_notifications.js
+#   contents:
+#     - js/api_token_notifications.js
+#   extra:
+#     preload:
+#       - base/main
+
+# api_token_notifications-css:
+#   filter: cssrewrite
+#   output: ckanext-api_token_notifications/%(version)s-api_token_notifications.css
+#   contents:
+#     - css/api_token_notifications.css

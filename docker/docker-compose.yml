@@ -1,0 +1,52 @@
+version: "3.9"
+
+name: token-notifications
+
+services:
+  solr:
+    image: ckan/ckan-solr:2.9-solr8
+    restart: "${CKAN_RESTART_POLICY:-no}"
+    ulimits:
+      nofile:
+        soft: 65000
+        hard: 65000
+    hostname: solr
+    # volumes:
+    #   - "./solr/conf:/var/solr/data/ckan"
+    #   - "${SOLR_DATA_HOST_FOLDER:-./solr_data}:/var/solr/data/ckan/data"
+    ports:
+      - "127.0.0.1:8983:8983"
+
+  postgres:
+    image: ckan/ckan-postgres-dev:2.9
+    restart: "${CKAN_RESTART_POLICY:-no}"
+    hostname: postgres
+    env_file:
+      - ./postgres/postgres.env
+    # volumes:
+    #   - "${POSTGRES_DATA_HOST_FOLDER:-./postgres_data}:/var/lib/postgresql/data"
+
+  ckan:
+    image: openknowledge/ckan-dev:${CKAN_IMAGE_TAG:-2.9}
+#    build: ../.
+    restart: "${CKAN_RESTART_POLICY:-no}"
+    hostname: ckan
+    # user: ckan
+    env_file:
+      - ./ckan/ckan.env
+    depends_on:
+      - solr
+      - postgres
+    volumes:
+      - "./ckan/etc/worker.conf:/etc/supervisord.d/worker.conf"
+      - "./ckan/etc/.pylintrc:/srv/app/src/ckan/.pylintrc"
+      - "./ckan/bin/ckan.py:/srv/app/src/ckan/ckan.py"
+      - "./vscode:/srv/app/src/ckan/.vscode"
+      - "../.:/srv/app/src/ckan/ckanext-api_token_notifications"
+    #   - "${CKAN_DATA_HOST_FOLDER:-./ckan_data}:/var/lib/ckan"
+    #   - "../.:/srv/ckan"
+    ports:
+      - "127.0.0.1:5010:5010"
+    entrypoint: "tail -f /dev/null"
+
+
