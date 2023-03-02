@@ -24,9 +24,9 @@ class TestApiTokenExpirationEmail(object):
     USER1_EMAIL = 'token_testuser1@test.org'
     USER2_EMAIL = 'token_testuser2@test.org'
 
-    # @mock.patch('ckanext.hdx_theme.plugin.send_email_on_token_creation')
+    @mock.patch('ckanext.api_token_notifications.plugin.send_email_on_token_creation')
     @mock.patch('ckanext.api_token_notifications.helpers.token_expiration_helper._mail_recipient')
-    def test_notify_users_about_api_token_expiration(self, mail_recipient_mock):
+    def test_notify_users_about_api_token_expiration(self, mail_recipient_mock, send_email_helper_mock):
         '''
         :param mail_recipient_mock:
         :type mail_recipient_mock: mock.MagicMock
