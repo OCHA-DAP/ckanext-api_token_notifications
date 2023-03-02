@@ -1,5 +1,9 @@
+try:
+    import unittest.mock as mock
+except ImportError:
+    import mock
+
 import pytest
-import mock
 import datetime
 
 import ckan.model as model
